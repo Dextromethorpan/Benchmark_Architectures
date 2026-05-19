@@ -18,8 +18,8 @@ At the end it prints a comparison table to the console and writes `results.json`
 **Version A — Direct Allocation**
 Simulates a naive DSP architecture where effects allocate scratch buffers on every audio block using `new` and `delete`. Represents the current Equalizer codebase style.
 
-**Version B — Marc's Architecture**
-Implements Marc Gallo's suggestion: an `AudioSystem` class that owns a `MemoryPool` and exposes an `IEffectFactory` as a service. All memory is allocated once at startup. Zero heap allocations during steady-state processing.
+**Version B — System Class Architecture**
+Implements an `AudioSystem` class that owns a `MemoryPool` and exposes an `IEffectFactory` as a service. All memory is allocated once at startup. Zero heap allocations during steady-state processing.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ This produces `results.json` in the `Release\` folder. Open it with BenchmarkVie
 
 ```
 > Version A - Direct Allocation
-> Version B - Marc's Architecture
+> Version B - System Class Architecture
 
   Timing Unpredictability
   Memory Churn
@@ -56,7 +56,7 @@ This produces `results.json` in the `Release\` folder. Open it with BenchmarkVie
   Concurrency Safety
 
   Version A (Direct)    2/4 concepts passed   needs attention
-  Version B (Marc)      4/4 concepts passed   real-time safe
+  Version B (System Class)      4/4 concepts passed   real-time safe
 
   Results written to: results.json
 ```
@@ -67,7 +67,7 @@ This produces `results.json` in the `Release\` folder. Open it with BenchmarkVie
 Benchmark_Architectures/
   BenchmarkTypes.hpp     shared types, counters, timer, checksum
   VersionA.hpp           direct allocation architecture
-  VersionB.hpp           Marc's AudioSystem + Factory + Pool
+  VersionB.hpp           System Class: AudioSystem + Factory + Pool
   Benchmark.hpp          four measurement functions
   Report.hpp             console output formatter
   JsonExporter.hpp       writes results.json
