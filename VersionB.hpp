@@ -8,7 +8,7 @@
 #include <stdexcept>
 
 // ─────────────────────────────────────────────────────────────
-// VERSION B — Marc's Architecture
+// VERSION B — System Class Architecture
 // AudioSystem + MemoryPool + Factory as a Service
 //
 // • MemoryPool owns all buffers — allocated ONCE at startup
@@ -176,7 +176,7 @@ private:
     std::vector<std::unique_ptr<IEffect>> mEffects;
 };
 
-// ── AudioSystem — Marc's System Class ───────────────────────
+// ── AudioSystem — The System Class ───────────────────────
 // • Owns MemoryPool — one allocation at startup
 // • Owns EffectChain
 // • Exposes factory as a service (registerFactory / addEffect)

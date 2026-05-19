@@ -12,7 +12,7 @@
 // • No memory pool — buffers allocated fresh each block
 // • No factory — effects constructed directly with new
 // • No system class — components wired together directly
-// • Represents what Marc warned against
+// • Represents the direct allocation style
 //
 // This is the BEFORE picture.
 // ─────────────────────────────────────────────────────────────
